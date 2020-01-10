@@ -64,7 +64,7 @@ export class LandingPage extends React.Component {
       return (
         <React.Fragment>
             {this.state.showLandingPage &&
-                <div className="modal" style={{ display: 'block' }} data-backdrop="static" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal landing-page" style={{ display: 'block' }} data-backdrop="static" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div className="full-screen flex-container-center">
                         <div className='row center-animation'>
                             <div className='col-8' onClick={this.closeLandingPage}>
@@ -72,7 +72,7 @@ export class LandingPage extends React.Component {
                                 <span className="letters-container">
                                     <span className="letters letters-left">Foraged &amp; Found</span>
                                     <br></br>
-                                    <span className='sub-title'>
+                                    <span className='sub-title' onClick={this.closeLandingPage}>
                                         Click to Enter!
                                     </span>
                                 </span>
@@ -81,13 +81,6 @@ export class LandingPage extends React.Component {
                                 <span className="circle circle-container"><span className="circle circle-dark-dashed"></span></span>
                               </h1>
                             </div>
-                        </div>
-                        <div className='row center-button'>
-                          <div className="landing-button">
-                            <button type="button" className="close close-landing" data-dismiss="modal" aria-label="Close" onClick={this.closeLandingPage}> Click to enter!
-                                <div aria-hidden="true">&times;</div>
-                            </button>
-                          </div>
                         </div>
                     </div>
                 </div>

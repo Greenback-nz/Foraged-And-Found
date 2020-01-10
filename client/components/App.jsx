@@ -30,7 +30,7 @@ export class App extends React.Component {
         this.props.fetchPrivateItems(this.props.auth.user.user_name)
       }
     } else if (!this.props.auth.isAuthenticated) {
-      //when logging out remove privateItems state from redux state
+      this.props.privateItems.privateItems = []
     }
   }
 
@@ -43,10 +43,9 @@ export class App extends React.Component {
             {this.props.items.items.length > 0 &&
               <Route exact path="/" component={Filter} />
             }
-            {!(localStorage.getItem('UrbanForagerRemembersMe')) &&
+            {!(localStorage.getItem('UrbanForagerRemembersMe'))&&
             <Route exact path="/" component={LandingPage} />
             }
-
             <Route exact path="/" component={PopUp} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />

@@ -214,7 +214,23 @@ label {
   height: 74vh;
 }
 
+/* Login/register popup */
+
+.popup {
+  z-index: 1;
+}
+
+.popup-content {
+  top: 12rem;
+}
+
 /* landing page  */
+
+.landing-page {
+  width: 100vw;
+  z-index: 2;
+}
+
 .full-screen {
   position: absolute;
   top: 0;
@@ -247,7 +263,7 @@ label {
 h1.ml8 {
   font-family: 'Lakki Reddy', cursive;
   font-weight: 900;
-  font-size: 4.5em;
+  font-size: 72px;
   color: #fff;
   width: 3em;
   height: 3em;
@@ -277,12 +293,12 @@ h1.ml8 {
 .sub-title {
   position: relative;
   z-index: 2;
-  font-size: 2rem;
+  font-size: 32px;
   display: inline-block;
   line-height: 0.7em;
   right: -0.12em;
   top: -0.2em;
-  color:#28395F;
+  color: #28395F;
   text-shadow: none;
 }
 
@@ -306,26 +322,56 @@ h1.ml8 {
 }
 
 .ml8 .circle-white {
-  width: 30rem;
-  height: 30rem;
+  width: 32vw;
+  height: 32vw;
   border: 2px dashed #D25E5D;
-  border-radius: 2em;
+  border-radius: 30%;
 }
 
 .ml8 .circle-dark {
-  width: 28rem;
-  height: 28rem;
+  width: 30vw;
+  height: 30vw;
   background-color: #F3BD06;
-  border-radius: 3em;
+  border-radius: 100%;
   z-index: 1;
 }
 
 .ml8 .circle-dark-dashed {
-  border-radius: 2.4em;
+  border-radius: 32%;
   background-color: transparent;
   border: 2px dashed #28395F;
-  width: 30rem;
-  height: 30rem;
+  width: 32vw;
+  height: 32vw;
+}
+
+@media only screen and (max-width: 640px) {
+  h1.ml8 {
+    font-size: 50px;
+  }
+  .sub-title {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  h1.ml8 {
+    font-size: 30px;
+  }
+  .sub-title {
+    font-size: 20px;
+  }
+  .ml8 .circle-white {
+    width: 54vw;
+    height: 54vw;
+  }
+  .ml8 .circle-dark {
+    width: 52vw;
+    height: 52vw;
+  }
+  .ml8 .circle-dark-dashed {
+    width: 54vw;
+    height: 54vw;
+  }
 }
 
 .close-landing {
@@ -393,7 +439,6 @@ h1.ml8 {
 
 /* login page */
 
-
 .login-div {
   max-width: 65%;
   background-color: #B0DDD9;
@@ -431,11 +476,12 @@ h1.ml8 {
   margin-top: 2rem;
 }
 
-
 /* register page */
+
 .registerContainer {
   text-align: -webkit-center;
 }
+
 .register-div {
   max-width: 75%;
   background-color: #B0DDD9;
@@ -474,8 +520,6 @@ h1.ml8 {
 .justify-content-start {
     margin-top: 0.5rem;
 }
-
-
 
 /* update item page*/
 
@@ -523,20 +567,17 @@ h1.ml8 {
 .update-image {
   margin-bottom: 1.25rem;
 }
+
 .update-check {
   text-align-last: left;
   max-width: 50%;
 }
 
 /* Add form */
+
 .modal {
   background-color: rgba(255, 255, 255, .6);
   overflow: scroll !important;
-}
-
-.popup-modal {
-  top: 12rem;
-
 }
 
 .modal-content {

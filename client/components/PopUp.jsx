@@ -31,12 +31,12 @@ class PopUp extends React.Component {
     return (
       <React.Fragment>
         {this.state.showPopUp &&
-          <div className="modal" style={{ display: 'block' }} id="myModal" data-backdrop="static" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div className="modal popup" style={{ display: 'block' }} id="myModal" data-backdrop="static" tabIndex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
-              <div className="modal-content popup-modal">
+              <div className="modal-content popup-content">
                 <div className="modal-header">
                   <h5 className="modal-title" id="staticBackdropLabel">Become A Forage Extraordinaire!</h5>
-                  
+
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal}>
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -48,7 +48,7 @@ class PopUp extends React.Component {
 
                 <div className="modal-footer">
                   <Link className="btn bg-main-reverse" to="/login">Login</Link>
-                  
+
                   <Link className="btn bg-main-reverse" to="/register">Register</Link>
                 </div>
               </div>
