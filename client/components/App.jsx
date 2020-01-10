@@ -5,22 +5,19 @@ import { connect } from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
-import Items from './Items'      
+import Items from './Items'
+import UpdateItem from './UpdateItem'
 import Filter from './Filter'
 import PopUp from './PopUp'
 import LandingPage from './LandingPage'
 import ModalConductor from './ModalConductor'
 
-
-
 import { fetchPublicItems, fetchPrivateItems } from '../actions/items'
-import UpdateItem from './UpdateItem'
 
 export class App extends React.Component {
+
   constructor(props) {
     super(props)
-    this.state = {
-    }
   }
 
   componentDidMount() {

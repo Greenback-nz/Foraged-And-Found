@@ -10,11 +10,9 @@ import { getCategories, getSeasons } from '../apis/items'
 
 const googleMapStyles = require('../../public/GoogleMapStyles.json')
 
-
 export class Map extends Component {
 
   constructor(props) {
-
     super(props)
     this.state = {
       center: {
@@ -31,15 +29,15 @@ export class Map extends Component {
       infoWindowShowing: false,
       activePin: null
     }
-
     this.openWindow = this.openWindow.bind(this)
     this.closeWindow = this.closeWindow.bind(this)
   }
 
   componentDidMount() {
-    getKey().then(() => {
-      this.setState({ key: true })
-    })
+    getKey()
+      .then(() => {
+        this.setState({ key: true })
+      })
     getCategories()
       .then(categoryData => {
         this.setState({ categoryData })
@@ -50,43 +48,29 @@ export class Map extends Component {
       })
   }
 
-  //try remaking these into DidUpdate as this method is considered unsafe and will be renamed in 17.x v of react
-  componentWillReceiveProps(newProps) {
-    this.setState({
-      pins: newProps.items.map((item) => {
-        var location = {
-          lat: item.lat,
-          lng: item.long
-        }
-        return location
-      })
-    })
-
-
-      //refactor idea
-        //if(this.props.currentItem != newProps.currentItem) {
-      //this.centerFocusOn(newProps.currentItem)
-
-    if (this.props.currentItem != newProps.currentItem) {
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
       this.setState({
-        center: {
-          lat: newProps.currentItem.lat,
-          lng: newProps.currentItem.long
-        },
-        zoom: 18
+        pins: this.props.items.map((item) => {
+          var location = {
+            lat: item.lat,
+            lng: item.long
+          }
+          return location
+        })
       })
+
+      if (this.props.currentItem != prevProps.currentItem) {
+        this.setState({
+          center: {
+            lat: this.props.currentItem.lat,
+            lng: this.props.currentItem.long
+          },
+          zoom: 18
+        })
+      }
     }
   }
-
-  //centerFocusOn = (currentItem) => {
-   // this.setState({
-   //   center: {
-   //     lat: currentItem.lat,
-   //     lng: currentItem.long
-  //    },
-  //    zoom: 18
-  //  })
-  //}
 
   toggleAddForm = (e) => {
     this.setState({
@@ -101,7 +85,6 @@ export class Map extends Component {
   }
 
   toggleAddMode = (e) => {
-
     this.setState({
       addMode: !this.state.addMode
     })
@@ -132,8 +115,8 @@ export class Map extends Component {
   }
 
   render() {
-    let mapSize = '100vh'
-    if(window.innerWidth < 800) mapSize = '50vh'
+    let mapHeight = '90vh'
+    if(window.innerWidth < 600) mapHeight = '70vh'
 
     return (
 
@@ -155,7 +138,7 @@ export class Map extends Component {
 
                 <GoogleMap
                   id='Traffic-layer-example' mapTypeId='satellite'
-                  mapContainerStyle={{ height: mapSize, width: "1200px", borderRadius: ".25rem", boxShadow: "rgba(0, 0, 0, 0.5) 0px 3px 4px -1px" }}
+                  mapContainerStyle={{ height: mapHeight, width: "1200px", borderRadius: ".25rem", boxShadow: "rgba(0, 0, 0, 0.5) 0px 3px 4px -1px" }}
                   options={{ styles: googleMapStyles,  draggableCursor: this.state.addMode ? 'url(/images/cursor.png) 20 50, auto'  : 'pointer', }}
                   zoom={this.state.zoom}
                   center={this.state.center}
@@ -198,16 +181,21 @@ export class Map extends Component {
                     )
                   })}
 
-                  {this.props.auth.auth.isAuthenticated ?
-                              <div className="addItemContainer">
-                                <div className="addPinButton">
-
-                                  <button type="button" className="btn btn-light" onClick={this.toggleAddMode} style={{ backgroundColor: this.state.addMode ? "#D25E5D" : "#f8f9fa"}}>{this.state.addMode ? "Stop Adding Items" : "Add Item by Pin"}</button>
-                                </div>
-                                <div className="addPinButton">
-                                  <button type="button" className="btn btn-light" onClick={this.toggleAddByAddressForm}>Add Item by Address</button>
-                                </div>
-                              </div>
+                  { this.props.auth.auth.isAuthenticated ?
+                    <div className="addItemContainer">
+                      <div className="addPinButton">
+                        <button
+                          type="button"
+                          className="btn btn-light"
+                          onClick={this.toggleAddMode}
+                          style={{ backgroundColor: this.state.addMode ? "#D25E5D" : "#f8f9fa"}}
+                        >{this.state.addMode ? "Stop Adding Items" : "Add Item by Pin"}
+                        </button>
+                      </div>
+                      <div className="addPinButton">
+                        <button type="button" className="btn btn-light" onClick={this.toggleAddByAddressForm}>Add Item by Address</button>
+                      </div>
+                    </div>
                     :
                     <div className="addItemContainer">
                       <div className="addPinButton">
@@ -222,11 +210,9 @@ export class Map extends Component {
                       </div>
                     </div>
                   }
-
                 </GoogleMap>
               </LoadScript>
             }
-
           </div>
         </div>
       </div>
