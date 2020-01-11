@@ -10,7 +10,6 @@ export function requestLogin () {
 }
 
 export function receiveLogin (user) {
-  localStorage.setItem('UrbanForagerRemembersMe', 'true') //set a local storage item in order to skip the landing page 
   return {
     type: 'LOGIN_SUCCESS',
     isFetching: false,

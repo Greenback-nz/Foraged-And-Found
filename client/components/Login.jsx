@@ -30,8 +30,8 @@ class Login extends React.Component {
     return (
       <div className="loginContainer">
         <div className="col-6 col-md-4 login-div">
-        <Link to='/' ><img className="img-fluid" src="/images/forage-strawberry.png" alt="Forage &amp; Find" /></Link>
-        <form className="login-register-form" onSubmit={this.submit}>
+        <img className="img-fluid" src="/images/forage-strawberry.png" alt="Forage &amp; Find" />
+        <form className="login-form" onSubmit={this.submit}>
             <h1 className='loginTitle'>Login</h1>
 
             {auth.errorMessage && (

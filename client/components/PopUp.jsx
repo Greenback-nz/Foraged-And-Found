@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
 
 
 class PopUp extends React.Component {
@@ -12,9 +11,13 @@ class PopUp extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.auth.isAuthenticated) {
-      setTimeout(this.popUp, 10000);
+    if (!localStorage.getItem('token')) {
+      this.interval = setTimeout(this.popUp, 10000)
     }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.interval)
   }
 
   popUp = () => {
@@ -60,10 +63,4 @@ class PopUp extends React.Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => {
-  return {
-    auth
-  }
-}
-
-export default connect(mapStateToProps)(PopUp)
+export default PopUp

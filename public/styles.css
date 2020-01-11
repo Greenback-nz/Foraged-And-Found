@@ -143,8 +143,6 @@ label {
 }
 
 .itemListImgDiv img {
-  /* height: 100%;
-  width: auto; */
   height: 144px;
   width: 144px;
   object-fit: cover;
@@ -152,6 +150,15 @@ label {
 
 .itemListImgDiv img:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 370px) {
+
+  .itemListImgDiv img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+  }
 }
 
 .list-button {
@@ -168,7 +175,7 @@ label {
 
 @media only screen and (max-width: 991px) {
 
-  .list-heading {
+  .list-heading, .list-paragraph {
     text-align: center;
   }
 
@@ -201,17 +208,18 @@ label {
 
 .card-img-top {
   width: 60%;
+  border-radius: 3px;
 }
 
 .list-card {
   text-align: center;
-  padding-left: 5%;
+  padding-left: 4%;
 }
 
 .scrollable {
-  /* overflow: auto; */
-  overflow: scroll;
-  height: 74vh;
+  overflow: auto;
+  /* height: 74vh; */
+  height: 60vh;
 }
 
 /* Login/register popup */
@@ -224,7 +232,7 @@ label {
   top: 12rem;
 }
 
-/* landing page  */
+/* Landing page  */
 
 .landing-page {
   width: 100vw;
@@ -391,10 +399,18 @@ h1.ml8 {
 
 .info-window {
   /* min-width: 21rem; */
+  min-width: 150px;
   max-width: 22rem;
 }
 
-/* filter panel */
+.info-window-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+/* Filter panel */
 
 .filter-content select:hover {
   cursor: pointer;
@@ -405,7 +421,6 @@ h1.ml8 {
   color: #28395F;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
 }
-
 
 .sort-heading {
   padding-top: .5rem;
@@ -437,7 +452,11 @@ h1.ml8 {
   cursor: pointer;
 }
 
-/* login page */
+/* Login page */
+
+.loginContainer {
+  text-align: -webkit-center;
+}
 
 .login-div {
   max-width: 65%;
@@ -459,12 +478,7 @@ h1.ml8 {
 .loginTitle {
   text-align: center;
   font-family: 'Lakki Reddy', cursive;
-  font-size: 3rem;
   margin-bottom: 1rem;
-}
-
-.loginContainer {
-  text-align: -webkit-center;
 }
 
 .form-inline {
@@ -476,7 +490,7 @@ h1.ml8 {
   margin-top: 2rem;
 }
 
-/* register page */
+/* Register page */
 
 .registerContainer {
   text-align: -webkit-center;
@@ -496,32 +510,30 @@ h1.ml8 {
 .registerTitle {
   text-align: center;
   font-family: 'Lakki Reddy', cursive;
-  font-size: 3rem;
   margin-bottom: 2rem;
 }
 
-.reg{
-  text-align: left;
+.register-form {
+  margin-right: 130px;
 }
 
 .reg-text {
   text-align: right;
 }
 
+.reg {
+  text-align: left;
+}
+
 .justify-content-start {
   margin-top: 0.5rem;
-
 }
 
 .registerButton {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
-.justify-content-start {
-    margin-top: 0.5rem;
-}
-
-/* update item page*/
+/* Update item page*/
 
 .edit-col {
   /* text-align: right; */
@@ -561,7 +573,7 @@ h1.ml8 {
 
 .update {
   margin-bottom: .8rem;
-  width: 80%;
+  width: 260px;
 }
 
 .update-image {
@@ -571,6 +583,39 @@ h1.ml8 {
 .update-check {
   text-align-last: left;
   max-width: 50%;
+}
+
+@media only screen and (max-width: 767px) {
+
+  .register-form {
+    margin-right: 0;
+  }
+
+  .reg, .reg input {
+    text-align: center !important;
+  }
+
+  .reg {
+    padding: 0 60px 0 60px;
+  }
+
+  .reg-text {
+    text-align: center;
+  }
+
+  .update {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
+
+  .reg {
+    padding: 0 30px 0 30px;
+  }
+
 }
 
 /* Add form */

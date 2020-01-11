@@ -48,84 +48,83 @@ class Register extends React.Component {
     return (
       <div className="registerContainer">
         <div className="col-6 col-md-4 register-div">
-          <Link to='/' ><img className="img-fluid" src="/images/forage-cabbage.png" alt="Forage &amp; Find" /></Link>
-
-          <form className="login-register-form" onSubmit={this.submit}>
-            <h1 className='registerTitle'>Register</h1>
-            {auth.errorMessage && <><h1><span className="badge badge-danger badge-lg">{auth.errorMessage}</span></h1><br></br></>}
-
-            <div className="row justify-content-start">
-              <div className='col-6 reg-text'>
-                <label htmlFor="user_name" 
-                  >Username:
-              </label>
-              </div>
-
-              <div className='col-6 reg'>
-                <input required className="form-control update" placeholder="Username" type="text" name="user_name" onChange={this.updateDetails} />
-              </div>
-            </div>
-
-            <div className="row justify-content-start">
-              <div className='col-6 reg-text'>
-                <label htmlFor="email" 
-                  >Email:
-              </label>
-              </div>
-
-              <div className='col-6 reg'>
-                <input required className="form-control update" placeholder="Email" type="email" name="email" onChange={this.updateDetails} />
-              </div>
-            </div>
-
-            <div className="row justify-content-start">
-              <div className='col-6 reg-text'>
-                <label htmlFor="first_name">
-                  First Name:
+          <img className="img-fluid" src="/images/forage-cabbage.png" alt="Forage &amp; Find" />
+          <h1 className='registerTitle'>Register</h1>
+          {auth.errorMessage && <><h1><span className="badge badge-danger badge-lg">{auth.errorMessage}</span></h1><br></br></>}
+          <form onSubmit={this.submit}>
+            <div className="register-form">
+              <div className="row justify-content-center">
+                <div className='col-12 col-md-6 reg-text'>
+                  <label htmlFor="user_name"
+                    >Username:
                 </label>
+                </div>
+
+                <div className='col-12 col-md-6 reg'>
+                  <input required className="form-control update" placeholder="Username" type="text" name="user_name" onChange={this.updateDetails} />
+                </div>
               </div>
 
-              <div className='col-6 reg'>
-                <input required className="form-control update" placeholder="First Name" type="text" name="first_name" onChange={this.updateDetails} />
-              </div>
-            </div>
-
-            <div className="row justify-content-start">
-              <div className='col-6 reg-text'>
-                <label htmlFor="lastName">
-                  Last Name:
+              <div className="row justify-content-start">
+                <div className='col-12 col-md-6 reg-text'>
+                  <label htmlFor="email"
+                    >Email:
                 </label>
+                </div>
+
+                <div className='col-12 col-md-6 reg'>
+                  <input required className="form-control update" placeholder="Email" type="email" name="email" onChange={this.updateDetails} />
+                </div>
               </div>
 
-              <div className='col-6 reg'>
-                <input required className="form-control update" placeholder="Last Name" type="text" name="last_name" onChange={this.updateDetails} />
+              <div className="row justify-content-start">
+                <div className='col-12 col-md-6 reg-text'>
+                  <label htmlFor="first_name">
+                    First Name:
+                  </label>
+                </div>
+
+                <div className='col-12 col-md-6 reg'>
+                  <input required className="form-control update" placeholder="First Name" type="text" name="first_name" onChange={this.updateDetails} />
+                </div>
+              </div>
+
+              <div className="row justify-content-start">
+                <div className='col-12 col-md-6 reg-text'>
+                  <label htmlFor="lastName">
+                    Last Name:
+                  </label>
+                </div>
+
+                <div className='col-12 col-md-6 reg'>
+                  <input required className="form-control update" placeholder="Last Name" type="text" name="last_name" onChange={this.updateDetails} />
+                </div>
+              </div>
+
+              <div className="row justify-content-start">
+                <div className='col-12 col-md-6 reg-text'>
+                  <label htmlFor="password">
+                    Password:
+                  </label>
+                </div>
+
+                <div className='col-12 col-md-6 reg'>
+                  <input required className="form-control update" placeholder="Password" type="password" name="password" onChange={this.updateDetails} />
+                </div>
+              </div>
+
+              <div className="row justify-content-start">
+                <div className='col-12 col-md-6 reg-text'>
+                  <label htmlFor="confirm_password">
+                    Confirm Password:
+                  </label>
+                </div>
+
+                <div className='col-12 col-md-6 reg'>
+                  <input required className="form-control update" placeholder="Confirm Password" type="password" name="confirm_password" onChange={this.updateDetails} />
+                </div>
               </div>
             </div>
-
-            <div className="row justify-content-start">
-              <div className='col-6 reg-text'>
-                <label htmlFor="password">
-                  Password:
-                </label>
-              </div>
-
-              <div className='col-6 reg'>
-                <input required className="form-control update" placeholder="Password" type="password" name="password" onChange={this.updateDetails} />
-              </div>
-            </div>
-
-            <div className="row justify-content-start">
-              <div className='col-6 reg-text'>
-                <label htmlFor="confirm_password">
-                  Confirm Password:
-                </label>
-              </div>
-
-              <div className='col-6 reg'>
-                <input required className="form-control update" placeholder="Confirm Password" type="password" name="confirm_password" onChange={this.updateDetails} />
-              </div>
-            </div>
-
             <div className="registerButton">
               <input className="btn bg-main-reverse" value="Register" type="submit" />
             </div>

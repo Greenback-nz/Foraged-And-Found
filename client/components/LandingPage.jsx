@@ -58,6 +58,7 @@ export class LandingPage extends React.Component {
     this.setState({
       showLandingPage: false
     })
+    localStorage.setItem('UrbanForagerRemembersMe', 'true') //set a local storage item in order to skip the landing page 
   }
 
   render() {

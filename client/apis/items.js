@@ -17,11 +17,10 @@ export function addItem(item) {
             return findSuburb(item.lat, item.long)
             .then(suburb => {
                 item.suburb = suburb
-                console.log('here')
                 return request
-                .post(addItemUrl)
-                .send(item)
-                .then(res => res.statusCode)
+                  .post(addItemUrl)
+                  .send(item)
+                  .then(res => res.statusCode)
             })
         })
     } else {
@@ -38,13 +37,11 @@ export function addItem(item) {
                     .then(res => res.statusCode)
                 })
             })
-
-            }
-        }
+      }
+}
 
 
 function getCoordinates(address) {
-
     return getKey().then(() => {
         return request
             .get(baseUrl + address + endUrl + process.env.GOOGLE_MAPS)
@@ -56,7 +53,6 @@ function getCoordinates(address) {
 }
 
 export function getPublicItems() {
-
     return request
         .get(url)
         .then(res => res.body)
@@ -66,7 +62,6 @@ export function getPrivateItems(user) {
     return request
         .get(url + `user/${user}`)
         .then(res => res.body)
-
 }
 
 export function getUserData(user){

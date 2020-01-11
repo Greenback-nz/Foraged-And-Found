@@ -9,6 +9,7 @@ import { showAddItemModal, updateItemModal } from '../actions/modals'
 import { getCategories, getSeasons } from '../apis/items'
 
 const googleMapStyles = require('../../public/GoogleMapStyles.json')
+const libraries = ["places"]
 
 export class Map extends Component {
 
@@ -115,8 +116,8 @@ export class Map extends Component {
   }
 
   render() {
-    let mapHeight = '90vh'
-    if(window.innerWidth < 600) mapHeight = '70vh'
+    let mapHeight = '95vh'
+    if(window.innerWidth < 992) mapHeight = '75vh'
 
     return (
 
@@ -133,12 +134,12 @@ export class Map extends Component {
             {this.state.key && this.props.items &&
               <LoadScript
                 id="script-loader"
-                libraries={["places"]}
+                libraries={libraries}
                 googleMapsApiKey={process.env.GOOGLE_MAPS}>
 
                 <GoogleMap
                   id='Traffic-layer-example' mapTypeId='satellite'
-                  mapContainerStyle={{ height: mapHeight, width: "1200px", borderRadius: ".25rem", boxShadow: "rgba(0, 0, 0, 0.5) 0px 3px 4px -1px" }}
+                  mapContainerStyle={{ height: mapHeight, width: "100%", borderRadius: ".25rem", boxShadow: "rgba(0, 0, 0, 0.5) 0px 3px 4px -1px" }}
                   options={{ styles: googleMapStyles,  draggableCursor: this.state.addMode ? 'url(/images/cursor.png) 20 50, auto'  : 'pointer', }}
                   zoom={this.state.zoom}
                   center={this.state.center}
@@ -161,7 +162,8 @@ export class Map extends Component {
                             >
                             <div className="info-window">
                               <h4>{this.props.items[index].item_name}</h4>
-                              {/* <input type='text' name={this.props.items[index].item_name} />  */}
+                              {this.props.items[index].image &&
+                                <img className="info-window-image" src={this.props.items[index].image} />}
                               <h6>Description:</h6><p> <em>"{this.props.items[index].description}"</em></p>
                               {this.props.items[index].address ?
                               <>
@@ -172,8 +174,6 @@ export class Map extends Component {
                               <h6>Category:</h6><p> {this.state.categoryData[this.props.items[index].category_id - 1].category_name}</p>
                               <h6>Quantity:</h6><p>{this.props.items[index].quantity}</p>
                               <h6>Season:</h6><p> {this.state.seasonData[this.props.items[index].season_id - 1].season_name}</p>
-                              {this.props.items[index].image &&
-                                <img src={this.props.items[index].image} style={{ maxWidth: '20rem' }} />}
                             </div>
                           </InfoWindow>
                         )}

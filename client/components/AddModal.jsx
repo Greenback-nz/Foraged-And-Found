@@ -15,9 +15,9 @@ class AddModal extends React.Component {
         lat: props.location.lat,
         long: props.location.lng,
         public: true,
-        category: '',
-        season: '',
-        quantity: null,
+        category: 1,
+        season: 1,
+        quantity: 1,
         image: null
       },
       formShowing: true,
@@ -66,9 +66,8 @@ class AddModal extends React.Component {
       loading: true,
       formShowing: false,
     })
-    console.log('twice')
     addItem(this.state.newItem)
-      .then(() => {
+      .then((res) => {
         this.props.fetchPublicItems()
       })
     this.setState({
@@ -165,7 +164,6 @@ class AddModal extends React.Component {
                           <div className="form-group col-md-4 pl-0 select-box">
                             <label>Category</label>
                             <select name='category' onChange={this.handleChange} className="form-control">
-                              <option value={0}>Select</option>
                               {this.state.categoryData &&
                                 this.state.categoryData.map((category, i) => {
                                   return (
@@ -181,7 +179,6 @@ class AddModal extends React.Component {
                               Season
                            </label>
                             <select name='season' onChange={this.handleChange} className="form-control">
-                              <option value={0}>Select</option>
                               {this.state.seasonData &&
                                 this.state.seasonData.map((season, i) => {
                                   return (

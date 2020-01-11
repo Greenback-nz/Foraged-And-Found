@@ -1,7 +1,6 @@
 import React from "react"
 import { connect } from 'react-redux'
 import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
-//import Resizer from 'react-image-file-resizer'
 
 import { addItem, getCategories, getSeasons } from '../apis/items'
 import { fetchPublicItems, fetchPrivateItems } from '../actions/items'
@@ -11,21 +10,21 @@ class AddItemByAddress extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            newItem: {
-                item_name: '',
-                user: this.props.auth.auth.user.user_name,
-                description: '',
-                address: '',
-                public: true,
-                category: '',
-                season: '',
-                quantity: null,
-                image: null,
-                showAddressWarning: false
-            },
-            formShowing: true,
-            loading: false,
-            itemAdded: false,
+          newItem: {
+            item_name: '',
+            user: this.props.auth.auth.user.user_name,
+            description: '',
+            address: '',
+            public: true,
+            category: 1,
+            season: 1,
+            quantity: 1,
+            image: null,
+            showAddressWarning: false
+          },
+          formShowing: true,
+          loading: false,
+          itemAdded: false,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -283,7 +282,6 @@ class AddItemByAddress extends React.Component {
                                                 Category
                                             </label>
                                             <select name='category' onChange={this.handleChange} className="form-control">
-                                                <option value={0}>Select</option>
                                                 {this.state.categoryData &&
                                                     this.state.categoryData.map((category, i) => {
                                                         return (
@@ -301,7 +299,6 @@ class AddItemByAddress extends React.Component {
                                                 Season
                                             </label>
                                             <select name='season' onChange={this.handleChange} className="form-control">
-                                                <option value={0}>Select</option>
                                                 {this.state.seasonData &&
                                                     this.state.seasonData.map((season, i) => {
                                                         return (

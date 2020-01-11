@@ -47,15 +47,21 @@ class ItemList extends React.Component {
     return (
       <div className='scrollable'>
         <div className='container rounded bg-main mb-3 item-cont  w-100'>
-          <div className='container-fluid rounded bg-main mb-3 w-100'>
+          <div className='container-fluid rounded bg-main mb-3 px-0 w-100'>
             <h3 className="list-heading">Listed Items</h3>
+            <p className="list-paragraph">Click an image to find it on the map</p>
             <div className="row justify-content-center">
-              <div className="col-centered">
-
+              <div className="col-centered w-100">
+                <div className='container-fluid'>
                 {this.props.items.map((item, i) => {
                   return (
                     <div key={i} className="card list-card text-left" style={{ alignItems: 'left' }} >
-                      <div className="ListItemItems text-left" onClick={() => this.props.dispatch(setCurrentItem(item))}>
+                      <div
+                        className="ListItemItems text-left"
+                        onClick={() => {
+                          this.props.dispatch(setCurrentItem(item))
+                          if (window.innerWidth < 992) scroll(0,0)
+                      }}>
                         <div className="itemListImgDiv">
                           <img className="card-img-top my-3" src={item.image == null ? `/images/icon${item.category_id}.svg` : item.image} alt={item.item_name} style={{ 'MaxWidth': 2 + 'rem' }} />
                         </div>
@@ -79,6 +85,7 @@ class ItemList extends React.Component {
                   )
                 }
                 )}
+                </div>
               </div>
 
             </div>

@@ -15,14 +15,19 @@ export function findSuburb(lat, long) {
         return item.body.results[0].address_components[0].long_name
       }
     })
+    .catch(err => {
+      return null
+    })
 }
 
 export function findAddress(lat, long) {
   return getSuburb(lat, long)
     .then(item => {
         return item.body.results[0].formatted_address
-      }
-    )
+    })
+    .catch(err => {
+      return null
+    })
 }
 
 function getSuburb(lat, long) {
@@ -35,4 +40,3 @@ function getSuburb(lat, long) {
       })
   })
 }
-
