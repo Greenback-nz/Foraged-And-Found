@@ -1,11 +1,13 @@
-# Urban Foraging 
+## Foraged and Found
 
-## Final Project
-
-Find the free food
+This app allows you to interact with a map (provided by Google Maps API) to...
+-Find various foragable items around Wellington and find any details about them
+-Filter items on map by category or season
+-Sort listed items alphabetically or newest/oldest
+-Register/login as a user
+-Add your own items (by address or pin drop), edit/delete them
 
 ## The Tech
-
 
 * React
 * Redux
