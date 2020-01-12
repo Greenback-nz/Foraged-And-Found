@@ -12,7 +12,9 @@ export class Filter extends React.Component {
     this.state = {
       items: this.props.items.items,
       public: true,
-      order: "default"
+      order: "default",
+      season: 0,
+      category: 0
     }
   }
 
@@ -31,32 +33,37 @@ export class Filter extends React.Component {
   }
 
   handleCategory = e => {
-      const items = this.state.public ? this.props.items.items : this.props.privateItems.privateItems
-
-      if (e.target.value == 0) {
-        this.setState({
-          items: items
-        })
-      } else {
-        this.setState({
-          items: items.filter(
-            item => item.category_id === Number(e.target.value)
-          )
-        })
-      }
+    this.setState({ category: Number(e.target.value) }, () => {
+      this.handleFilter()
+    })
   }
 
   handleSeason = e => {
-    const items = this.state.public ? this.props.items.items : this.props.privateItems.privateItems
+    this.setState({ season: Number(e.target.value) }, () => {
+      this.handleFilter()
+    })
+  }
 
-    if (e.target.value == 0) {
-      this.setState({
-        items: items
-      })
-    } else {
+  handleFilter = () => {
+    const items = this.state.public ? this.props.items.items : this.props.privateItems.privateItems
+    if (this.state.season === 0 && this.state.category === 0) {
+      this.setState({ items: items })
+    } else if (this.state.season === 0 && this.state.category > 0) {
       this.setState({
         items: items.filter(
-          item => item.season_id === Number(e.target.value) || item.season_id === 5
+          item => item.category_id === this.state.category
+        )
+      })
+    } else if (this.state.category === 0 && this.state.season > 0) {
+      this.setState({
+        items: items.filter(
+          item => item.season_id === this.state.season || item.season_id === 5
+        )
+      })
+    } else if (this.state.season > 0 && this.state.category > 0) {
+      this.setState({
+        items: items.filter(
+          item => (item.category_id === this.state.category) && (item.season_id === this.state.season || item.season_id === 5)
         )
       })
     }
