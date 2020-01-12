@@ -1,11 +1,24 @@
-# Urban Foraging 
+## Foraged and Found
 
-## Final Project
+This app allows you to interact with a map (provided by Google Maps API) to...
+- Find various foragable items around Wellington and find any details about them
+- Filter items on map by category, season, or public/private items
+- Sort listed items alphabetically or newest/oldest
+- Register/login as a user
+- Add your own items (by address or pin drop), edit/delete them
 
-Find the free food
+## To run this app...
+
+1. Clone this repository
+2. Create a .env file (follow .envexample), add your own JWT_SECRET
+3. Sign up for Google Cloud Platform, and enable the following APIs: Maps JavaScript, Places, Geocoding
+4. Add your API key from Google Cloud Platform to .env file
+5. Run npm install
+6. Run npx knex:migrate latest
+7. Run npx knex:seed run
+8. Run npm run dev
 
 ## The Tech
-
 
 * React
 * Redux
