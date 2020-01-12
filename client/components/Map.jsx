@@ -50,7 +50,7 @@ export class Map extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props !== prevProps) {
+    if (this.props.items !== prevProps.items) {
       this.setState({
         pins: this.props.items.map((item) => {
           var location = {
@@ -60,16 +60,16 @@ export class Map extends Component {
           return location
         })
       })
+    }
 
-      if (this.props.currentItem != prevProps.currentItem) {
-        this.setState({
-          center: {
-            lat: this.props.currentItem.lat,
-            lng: this.props.currentItem.long
-          },
-          zoom: 18
-        })
-      }
+    if (this.props.currentItem != prevProps.currentItem) {
+      this.setState({
+        center: {
+          lat: this.props.currentItem.lat,
+          lng: this.props.currentItem.long
+        },
+        zoom: 18
+      })
     }
   }
 

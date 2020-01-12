@@ -2,35 +2,28 @@ import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import { deleteItem, getUserData } from '../apis/items'
 import { setCurrentItem } from '../actions/items'
+// import { connect } from 'react-redux'
 
 class ItemList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      item: null,
+      items: this.props.items,
       data: null
     }
   }
 
-  // --------------------
-  //  connecting redux make this break for some reason, please leave comments
-  // --------------------
-  //   constructor(props) {
-  //     super(props)
-  //     this.state = {}
-  //   }
+  componentDidMount() {
+    if(this.props.auth.isAuthenticated) getUserData(this.props.auth.user.user_name).then(data => this.setState({data}))
+  }
 
-    componentDidMount() {
-      if(this.props.auth.isAuthenticated) getUserData(this.props.auth.user.user_name).then(data => this.setState({data}))
+  componentDidUpdate(prevProps) {
+    if (this.props.items !== prevProps.items) {
+      console.log(prevProps.items)
+      console.log(this.props.items)
+      this.setState({ items: this.props.items })
     }
-
-  //   componentDidUpdate(newProps) {
-  //     console.log(newProps)
-  //     this.setState({
-  //       items: newProps.items
-  //     })
-  //     return true
-  //   }
+  }
 
   handleDelete = (id) => {
     deleteItem(id)
@@ -53,7 +46,7 @@ class ItemList extends React.Component {
             <div className="row justify-content-center">
               <div className="col-centered w-100">
                 <div className='container-fluid'>
-                {this.props.items.map((item, i) => {
+                {this.state.items.map((item, i) => {
                   return (
                     <div key={i} className="card list-card text-left" style={{ alignItems: 'left' }} >
                       <div
@@ -96,6 +89,12 @@ class ItemList extends React.Component {
     )
   }
 }
-
+//
+// const mapStateToProps = (state) => {
+//   return {
+//     items: state.items.items
+//   }
+// }
 
 export default ItemList
+// export default connect(mapStateToProps, {})(ItemList)

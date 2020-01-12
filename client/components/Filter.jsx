@@ -8,7 +8,6 @@ import FilterBox from './FilterBox'
 export class Filter extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = {
       items: this.props.items.items,
       public: true,
@@ -23,12 +22,10 @@ export class Filter extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.items !== prevProps.items && this.state.public) {
-      this.setState({ items: this.props.items.items })
-    }
-
-    if (this.props.privateItems !== prevProps.privateItems && !this.state.public) {
-      this.setState({ items: this.props.privateItems.privateItems})
+    if (this.props.items !== prevProps.items || this.props.privateItems !== prevProps.privateItems) {
+      this.setState({ items: this.state.public ? this.props.items.items : this.props.privateItems.privateItems}, () => {
+        this.sortItems()
+      })
     }
   }
 
@@ -94,7 +91,6 @@ export class Filter extends React.Component {
 
   sortItems() {
     let { items, order } = this.state
-
     if (order == 'default') {
       items.sort((a, b) => {
         return a.item_name > b.item_name ? 1 : -1

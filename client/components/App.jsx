@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import Nav from './Nav'
-import Items from './Items'
 import UpdateItem from './UpdateItem'
 import Filter from './Filter'
 import PopUp from './PopUp'
@@ -51,7 +50,6 @@ export class App extends React.Component {
             <Route exact path="/register" component={Register} />
             {this.props.auth.isAuthenticated &&
             <>
-              <Route path='/add' component={Items} />
               <Route path="/update/:id" component={UpdateItem} />
             </>}
       </Router>
