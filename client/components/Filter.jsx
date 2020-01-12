@@ -57,7 +57,7 @@ export class Filter extends React.Component {
     } else if (this.state.category === 0 && this.state.season > 0) {
       this.setState({
         items: items.filter(
-          item => item.season_id === this.state.season || item.season_id === 5
+          item => item.season_id === this.state.season
         )
       })
     } else if (this.state.season > 0 && this.state.category > 0) {

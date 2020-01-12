@@ -135,15 +135,17 @@ class AddModal extends React.Component {
                               onChange={this.handleChange}
                             />
                           </div>
-                          <div className="form-check">
-                            <input
-                              type='checkbox'
-                              name='public'
-                              className="form-check-input"
-                              onChange={this.handleCheckbox}
-                            />
-                            <label className="form-check-label" htmlFor="exampleCheck1">Private</label>
-                            <small id="subtext" className="form-text text-muted">Keep your foraging spot a secret!</small>
+                          <div className="form-group">
+                            <div className="form-check">
+                              <input
+                                type='checkbox'
+                                name='public'
+                                className="form-check-input"
+                                onChange={this.handleCheckbox}
+                              />
+                              <label className="form-check-label" htmlFor="exampleCheck1">Private</label>
+                              <small id="subtext" className="form-text text-muted">Keep your foraging spot a secret!</small>
+                            </div>
                           </div>
                         </div>
                         <div className="form-row">
@@ -174,7 +176,7 @@ class AddModal extends React.Component {
                                 })}
                             </select>
                           </div>
-                          <div className="form-group col-md-4 select-box">
+                          <div className="form-group col-md-4 pl-0 select-box">
                             <label>
                               Season
                            </label>

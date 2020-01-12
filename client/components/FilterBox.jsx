@@ -43,7 +43,7 @@ const FilterBox = ({handleCategory, handleSeason, handleRecent}) => {
         {/* Recently dropdown */}
         <article className="card-group-item">
             <header className="card-header filter-options">
-            <h6 className="title">Recently Added </h6>
+            <h6 className="title">Order By</h6>
             </header>
             <div className="filter-content">
             <div className="list-group list-group-flush">

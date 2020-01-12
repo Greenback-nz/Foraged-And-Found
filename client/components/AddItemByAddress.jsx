@@ -187,16 +187,17 @@ class AddItemByAddress extends React.Component {
                                                 placeholder="e.g. Parsley"
                                                 onChange={this.handleChange} />
                                         </div>
+                                        <div className="form-group">
+                                          <div className="form-check">
+                                              <input
+                                                  type='checkbox'
+                                                  name='public'
+                                                  className="form-check-input"
+                                                  onChange={this.handleCheckbox} />
 
-                                        <div className="form-check">
-                                            <input
-                                                type='checkbox'
-                                                name='public'
-                                                className="form-check-input"
-                                                onChange={this.handleCheckbox} />
-
-                                            <label className="form-check-label" htmlFor="exampleCheck1">Private</label>
-                                            <small id="subtext" className="form-text text-muted">Keep your foraging spot a secret!</small>
+                                              <label className="form-check-label" htmlFor="exampleCheck1">Private</label>
+                                              <small id="subtext" className="form-text text-muted">Keep your foraging spot a secret!</small>
+                                          </div>
                                         </div>
                                     </div>
 
@@ -262,6 +263,7 @@ class AddItemByAddress extends React.Component {
                                         {this.state.showAddressWarning && <p style={{color: 'red'}}>Please enter a valid address</p>}
 
                                     <div className="form-row">
+                                      <div className="form-group">
                                         <label>
                                             Description
                                         </label>
@@ -274,6 +276,7 @@ class AddItemByAddress extends React.Component {
                                             rows='3'
 
                                             onChange={this.handleChange} />
+                                        </div>
                                     </div>
 
                                     <div className="form-row">
@@ -294,7 +297,7 @@ class AddItemByAddress extends React.Component {
                                             </select>
                                         </div>
 
-                                        <div className="form-group col-md-4 select-box">
+                                        <div className="form-group col-md-4 pl-0 select-box">
                                             <label>
                                                 Season
                                             </label>
@@ -348,21 +351,21 @@ class AddItemByAddress extends React.Component {
                                     </div>
                                     <div className='modal-footer'>
                                     <div className="col-auto my-1">
-                                            <button
-                                                type='button'
-                                                className='btn btn-secondary'
-                                                data-dismiss='modal'
-                                                onClick={this.props.toggleAddForm}>
-                                                Close
-                                            </button>
-                                        </div>
-                                        <div className="col-auto my-1">
-                                            <button
-                                                type='submit'
-                                                className='btn btn-secondary'> Submit
-                                            </button>
-                                        </div>
-                                        </div>
+                                      <button
+                                          type='submit'
+                                          className='btn btn-secondary'> Submit
+                                      </button>
+                                    </div>
+                                    <div className="col-auto my-1">
+                                      <button
+                                          type='button'
+                                          className='btn btn-secondary'
+                                          data-dismiss='modal'
+                                          onClick={this.props.toggleAddForm}>
+                                          Close
+                                      </button>
+                                    </div>
+                                  </div>
                                 </form>
                             </div>
                         </>

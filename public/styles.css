@@ -625,6 +625,10 @@ h1.ml8 {
   overflow: scroll !important;
 }
 
+.modal-body {
+  max-width: 100%;
+}
+
 .modal-content {
   border-color: #F3BD06;
   border-style: solid;
